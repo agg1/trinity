@@ -11,7 +11,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="hal"
 
 DEPEND="
-	dev-libs/dbus-tqt
 	hal? ( sys-apps/hal )"
 RDEPEND="${RDEPEND}"
 
