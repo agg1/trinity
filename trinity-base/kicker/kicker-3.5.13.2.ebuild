@@ -19,7 +19,7 @@ DEPEND=">=trinity-base/libkonq-${PV}:${SLOT}
 RDEPEND="${DEPEND}
 	trinity-base/kmenuedit:${SLOT}"
 
-PATCHES=( "$FILESDIR/${PN}-3.5.13.2-include-dbus.patch" )
+#PATCHES=( "$FILESDIR/${PN}-3.5.13.2-include-dbus.patch" )
 
 src_configure() {
 	mycmakeargs=(
