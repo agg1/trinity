@@ -19,7 +19,6 @@ RDEPEND="
 	>=trinity-base/kdeartwork-emoticons-${PV}:${SLOT}
 	>=trinity-base/kdeartwork-icon-themes-${PV}:${SLOT}
 	>=trinity-base/kdeartwork-icewm-themes-${PV}:${SLOT}
-	>=trinity-base/kdeartwork-kscreensaver-${PV}:${SLOT}
 	>=trinity-base/kdeartwork-kwin-styles-${PV}:${SLOT}
 	>=trinity-base/kdeartwork-kworldclock-${PV}:${SLOT}
 	>=trinity-base/kdeartwork-sounds-${PV}:${SLOT}
