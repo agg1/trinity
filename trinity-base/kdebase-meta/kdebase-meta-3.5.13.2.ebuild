@@ -25,12 +25,10 @@ RDEPEND=">=trinity-base/kdebase-starttde-${PV}:${SLOT}
 	>=trinity-base/kdcop-${PV}:${SLOT}
 	>=trinity-base/kdebugdialog-${PV}:${SLOT}
 	>=trinity-base/kdepasswd-${PV}:${SLOT}
-	>=trinity-base/kdeprint-${PV}:${SLOT}
 	>=trinity-base/kdeeject-${PV}:${SLOT}
 	>=trinity-base/kdesktop-${PV}:${SLOT}
 	>=trinity-base/kdesu-${PV}:${SLOT}
 	>=trinity-base/kdialog-${PV}:${SLOT}
-	>=trinity-base/kdm-${PV}:${SLOT}
 	>=trinity-base/kfind-${PV}:${SLOT}
 	>=trinity-base/khelpcenter-${PV}:${SLOT}
 	>=trinity-base/khotkeys-${PV}:${SLOT}
@@ -43,7 +41,6 @@ RDEPEND=">=trinity-base/kdebase-starttde-${PV}:${SLOT}
 	>=trinity-base/kpager-${PV}:${SLOT}
 	>=trinity-base/kpersonalizer-${PV}:${SLOT}
 	>=trinity-base/kreadconfig-${PV}:${SLOT}
-	>=trinity-base/kscreensaver-${PV}:${SLOT}
 	>=trinity-base/ksmserver-${PV}:${SLOT}
 	>=trinity-base/ksplashml-${PV}:${SLOT}
 	>=trinity-base/kstart-${PV}:${SLOT}
