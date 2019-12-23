@@ -15,6 +15,7 @@ SLOT="$TRINITY_VER"
 IUSE=""
 KEYWORDS="~amd64 ~x86"
 
+#	>=trinity-base/superkaramba-${PV}:${SLOT}
 RDEPEND="
 	>=trinity-base/ark-${PV}:${SLOT}
 	>=trinity-base/kdeutils-doc-${PV}:${SLOT}
@@ -32,5 +33,4 @@ RDEPEND="
 	>=trinity-base/kregexpeditor-${PV}:${SLOT}
 	>=trinity-base/ksim-${PV}:${SLOT}
 	>=trinity-base/ktimer-${PV}:${SLOT}
-	>=trinity-base/kwallet-${PV}:${SLOT}
-	>=trinity-base/superkaramba-${PV}:${SLOT}"
+	>=trinity-base/kwallet-${PV}:${SLOT}"
