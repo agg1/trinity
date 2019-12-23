@@ -14,7 +14,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="${TRINITY_VER}"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa avahi arts cups fam jpeg2k lua lzma openexr spell sudo tiff utempter
-	xcomposite"
+	xcomposite libressl"
 
 DEPEND="${DEPEND}
 	=dev-qt/tqtinterface-${TRINITY_VER}*
@@ -24,7 +24,8 @@ DEPEND="${DEPEND}
 	media-libs/libart_lgpl
 	net-dns/libidn
 	app-text/ghostscript-gpl
-	>=dev-libs/openssl-0.9.7d:=
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libart_lgpl
