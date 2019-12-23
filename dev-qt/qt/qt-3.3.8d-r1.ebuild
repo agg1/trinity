@@ -44,9 +44,7 @@ DEPEND="
 	xinerama? ( x11-libs/libXinerama )
 	!!<=dev-qt/qt-meta-3.3.8c"
 RDEPEND="${RDEPEND}
-	x11-proto/inputproto
-	x11-proto/xextproto
-	xinerama? ( x11-proto/xineramaproto )"
+	x11-base/xorg-proto"
 
 #	immqt? ( x11-proto/xineramaproto )
 #	immqt-bc? ( x11-proto/xineramaproto )"
@@ -107,6 +105,8 @@ src_prepare() {
 	if [[ "$TDE_VERSION" != "$TDE_PATCH_VERSION" ]]; then
 		epatch "${FILESDIR}/trinity-$TDE_VERSION..$TDE_PATCH_VERSION/"
 	fi
+
+	epatch "${FILESDIR}/qt3-musl.patch"
 
 	# It's nice to able user apply his own patches.
 	epatch_user
