@@ -15,11 +15,11 @@ SLOT="${TRINITY_VER}"
 IUSE=""
 KEYWORDS="amd64 x86"
 
+#	>=trinity-base/kamera-${PV}:${SLOT}
+#	>=trinity-base/kdvi-${PV}:${SLOT}
+#	>=trinity-base/kfax-${PV}:${SLOT}
 RDEPEND="
-	>=trinity-base/kamera-${PV}:${SLOT}
 	>=trinity-base/kcoloredit-${PV}:${SLOT}
-	>=trinity-base/kdvi-${PV}:${SLOT}
-	>=trinity-base/kfax-${PV}:${SLOT}
 	>=trinity-base/kdegraphics-kfile-plugins-${PV}:${SLOT}
 	>=trinity-base/kdegraphics-doc-${PV}:${SLOT}
 	>=trinity-base/kgamma-${PV}:${SLOT}
