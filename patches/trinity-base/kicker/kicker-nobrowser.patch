@@ -1,0 +1,42 @@
+diff -Naur kdebase-trinity-3.5.13.2.orig/kicker/kicker/core/containerarea.cpp kdebase-trinity-3.5.13.2/kicker/kicker/core/containerarea.cpp
+--- kdebase-trinity-3.5.13.2.orig/kicker/kicker/core/containerarea.cpp	2012-09-16 12:52:04.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kicker/kicker/core/containerarea.cpp	2019-12-18 22:11:29.990424451 +0000
+@@ -177,8 +177,7 @@
+     }
+     else
+     {
+-        buttons << "kde-Home.desktop"
+-                << "kde-konqbrowser.desktop";
++        buttons << "kde-Home.desktop";
+     }
+ 
+     //int size = dsize;
+diff -Naur kdebase-trinity-3.5.13.2.orig/kicker/kicker/core/default-apps kdebase-trinity-3.5.13.2/kicker/kicker/core/default-apps
+--- kdebase-trinity-3.5.13.2.orig/kicker/kicker/core/default-apps	2012-05-24 01:35:16.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kicker/kicker/core/default-apps	2019-12-18 22:11:37.109350058 +0000
+@@ -1,2 +1 @@
+ Home.desktop
+-Internet/konqbrowser.desktop
+diff -Naur kdebase-trinity-3.5.13.2.orig/kicker/menuext/tom/TASKGROUPS kdebase-trinity-3.5.13.2/kicker/menuext/tom/TASKGROUPS
+--- kdebase-trinity-3.5.13.2.orig/kicker/menuext/tom/TASKGROUPS	2012-05-24 01:35:16.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kicker/menuext/tom/TASKGROUPS	2019-12-18 22:12:34.501748072 +0000
+@@ -33,17 +33,13 @@
+ [General]
+ Icon=konqueror
+ Name=Internet
+-NumTasks=3
++NumTasks=2
+ Hidden=true
+ 
+ [Task0]
+-Name=Browse the web
+-DesktopFile=applications/konqbrowser.desktop
+-
+-[Task1]
+ Name=EMail
+ DesktopFile=Internet/KMail.desktop
+ 
+-[Task2]
++[Task1]
+ Name=VNC
+ DesktopFile=Internet/keystone.desktop

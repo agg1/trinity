@@ -1,0 +1,26 @@
+diff -Naur kdebase-trinity-3.5.13.2.orig/ksysguard/ksysguardd/Linux/netstat.c kdebase-trinity-3.5.13.2/ksysguard/ksysguardd/Linux/netstat.c
+--- kdebase-trinity-3.5.13.2.orig/ksysguard/ksysguardd/Linux/netstat.c	2012-05-24 01:35:16.000000000 +0000
++++ kdebase-trinity-3.5.13.2/ksysguard/ksysguardd/Linux/netstat.c	2019-12-17 00:13:38.423641235 +0000
+@@ -27,6 +27,8 @@
+ #include <string.h>
+ #include <time.h>
+ 
++#include <sys/types.h>
++
+ #include "ksysguardd.h"
+ #include "Command.h"
+ #include "ccont.h"
+@@ -266,10 +268,10 @@
+ {
+ 	FILE *netstat;
+ 	char buffer[1024];
+-	uint local_addr, local_port;
+-	uint remote_addr, remote_port;
++	u_int local_addr, local_port;
++	u_int remote_addr, remote_port;
+ 	int uid, i;
+-	uint state;
++	u_int state;
+ 	SocketInfo *socket_info;
+ 
+ 	if (strstr(cmd, "tcp")) {

@@ -1,0 +1,79 @@
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/cupsaddsmb2.cpp kdelibs-trinity-3.5.13.2/kdeprint/cups/cupsaddsmb2.cpp
+--- kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/cupsaddsmb2.cpp	2012-09-16 09:38:12.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kdeprint/cups/cupsaddsmb2.cpp	2019-12-24 22:34:25.211896045 +0000
+@@ -41,6 +41,8 @@
+ #include <cups/cups.h>
+ #include <ctype.h>
+ 
++#include <cups/ppd.h>
++
+ CupsAddSmb::CupsAddSmb(TQWidget *parent, const char *name)
+ : KDialog(parent, name)
+ {
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/cupsdconf2/cups-util.c kdelibs-trinity-3.5.13.2/kdeprint/cups/cupsdconf2/cups-util.c
+--- kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/cupsdconf2/cups-util.c	2012-09-16 09:38:12.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kdeprint/cups/cupsdconf2/cups-util.c	2019-12-24 22:29:27.411904098 +0000
+@@ -512,12 +512,12 @@
+   * See if we are accessing localhost...
+ 	the struct has changed in newer versions - PiggZ (adam@piggz.co.uk)
+   */
+-#if CUPS_VERSION_MAJOR == 1 && CUPS_VERSION_MINOR >= 2
++//#if CUPS_VERSION_MAJOR == 1 && CUPS_VERSION_MINOR >= 2
+         if (!httpAddrLocalhost(http))
+-#else
+-	if (ntohl(*(int*)&http->hostaddr.sin_addr) != 0x7f000001 &&
+-      strcasecmp(http->hostname, "localhost") != 0)
+-#endif
++//#else
++//	if (ntohl(*(int*)&http->hostaddr.sin_addr) != 0x7f000001 &&
++//      strcasecmp(http->hostname, "localhost") != 0)
++//#endif
+    return (0);
+ 
+  /*
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/ipprequest.cpp kdelibs-trinity-3.5.13.2/kdeprint/cups/ipprequest.cpp
+--- kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/ipprequest.cpp	2013-01-05 12:15:12.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kdeprint/cups/ipprequest.cpp	2019-12-24 23:09:05.332839794 +0000
+@@ -30,6 +30,12 @@
+ #include <tqregexp.h>
+ #include <cups/cups.h>
+ 
++#ifndef _IPP_PRIVATE_STRUCTURES
++#define _IPP_PRIVATE_STRUCTURES 1
++#endif
++
++#include <cups/ipp.h>
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
+@@ -769,7 +775,7 @@
+ 		{
+ 			ipp_attribute_t	*attr2 = attr->next;
+ 			attr->next = attr2->next;
+-			_ipp_free_attr(attr2);
++			//_ipp_free_attr(attr2);
+ 			break;
+ 		}
+ 		attr = attr->next;
+@@ -783,4 +789,4 @@
+ #else // HAVE_CUPS_1_6
+ ipp_attribute_t* IppRequest::first()
+ { return (request_ ? request_->attrs : NULL); }
+-#endif // HAVE_CUPS_1_6
+\ No newline at end of file
++#endif // HAVE_CUPS_1_6
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/ipprequest.h kdelibs-trinity-3.5.13.2/kdeprint/cups/ipprequest.h
+--- kdelibs-trinity-3.5.13.2.orig/kdeprint/cups/ipprequest.h	2012-09-16 09:38:13.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kdeprint/cups/ipprequest.h	2019-12-24 23:08:56.812840025 +0000
+@@ -20,6 +20,10 @@
+ #ifndef IPPREQUEST_H
+ #define IPPREQUEST_H
+ 
++#ifndef _IPP_PRIVATE_STRUCTURES
++#define _IPP_PRIVATE_STRUCTURES 1
++#endif
++
+ #include <tqstring.h>
+ #include <tqstringlist.h>
+ #include <tqtextstream.h>

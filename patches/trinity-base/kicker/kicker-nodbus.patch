@@ -1,0 +1,40 @@
+diff -Naur kdebase-trinity-3.5.13.2.orig/kicker/kicker/ui/k_new_mnu.cpp kdebase-trinity-3.5.13.2/kicker/kicker/ui/k_new_mnu.cpp
+--- kdebase-trinity-3.5.13.2.orig/kicker/kicker/ui/k_new_mnu.cpp	2013-05-09 19:13:59.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kicker/kicker/ui/k_new_mnu.cpp	2019-12-16 22:15:04.106200466 +0000
+@@ -103,11 +103,11 @@
+ 
+ #include "config.h"
+ 
+-#ifndef NO_QT3_DBUS_SUPPORT
+-/* We acknowledge the the dbus API is unstable */
+-#define DBUS_API_SUBJECT_TO_CHANGE
+-#include <dbus/connection.h>
+-#endif // NO_QT3_DBUS_SUPPORT
++//#ifndef NO_QT3_DBUS_SUPPORT
++///* We acknowledge the the dbus API is unstable */
++//#define DBUS_API_SUBJECT_TO_CHANGE
++//#include <dbus/connection.h>
++//#endif // NO_QT3_DBUS_SUPPORT
+ 
+ #ifdef COMPILE_HALBACKEND
+ #include <hal/libhal.h>
+diff -Naur kdebase-trinity-3.5.13.2.orig/kicker/kicker/ui/k_new_mnu.h kdebase-trinity-3.5.13.2/kicker/kicker/ui/k_new_mnu.h
+--- kdebase-trinity-3.5.13.2.orig/kicker/kicker/ui/k_new_mnu.h	2013-05-09 19:13:59.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kicker/kicker/ui/k_new_mnu.h	2019-12-16 22:14:50.097346839 +0000
+@@ -45,11 +45,11 @@
+ 
+ #include <config.h>
+ 
+-#ifndef NO_QT3_DBUS_SUPPORT
+-/* We acknowledge the the dbus API is unstable */
+-#define DBUS_API_SUBJECT_TO_CHANGE
+-#include <dbus/connection.h>
+-#endif // NO_QT3_DBUS_SUPPORT
++//#ifndef NO_QT3_DBUS_SUPPORT
++///* We acknowledge the the dbus API is unstable */
++//#define DBUS_API_SUBJECT_TO_CHANGE
++//#include <dbus/connection.h>
++//#endif // NO_QT3_DBUS_SUPPORT
+ 
+ #ifdef COMPILE_HALBACKEND
+ #include <hal/libhal.h>

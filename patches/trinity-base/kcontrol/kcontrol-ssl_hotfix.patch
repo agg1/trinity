@@ -1,0 +1,12 @@
+diff -Naur kdebase-trinity-3.5.13.2.orig/kcontrol/crypto/crypto.cpp kdebase-trinity-3.5.13.2/kcontrol/crypto/crypto.cpp
+--- kdebase-trinity-3.5.13.2.orig/kcontrol/crypto/crypto.cpp	2012-09-16 12:52:02.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kcontrol/crypto/crypto.cpp	2019-12-16 22:22:45.861436511 +0000
+@@ -2386,7 +2386,7 @@
+ #endif
+ 
+   // We repeat for SSLv3
+-  meth = SSLv3_client_method();
++  meth = SSLv23_client_method();
+   SSLeay_add_ssl_algorithms();
+   ctx = SSL_CTX_new(meth);
+   if (ctx == NULL) return false;

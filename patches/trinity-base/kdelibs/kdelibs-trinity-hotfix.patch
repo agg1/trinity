@@ -1,0 +1,117 @@
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kdecore/network/kserversocket.cpp kdelibs-trinity-3.5.13.2/kdecore/network/kserversocket.cpp
+--- kdelibs-trinity-3.5.13.2.orig/kdecore/network/kserversocket.cpp	2012-09-16 09:38:12.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kdecore/network/kserversocket.cpp	2019-12-16 19:38:27.574301841 +0000
+@@ -292,7 +292,8 @@
+ 	}
+       else if (!listen())
+ 	// error happened during listen
+-	return false;
++	//return false;
++	return NULL;
+     }
+ 
+   // check to see if we're doing a timeout
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kinit/start_kdeinit.c kdelibs-trinity-3.5.13.2/kinit/start_kdeinit.c
+--- kdelibs-trinity-3.5.13.2.orig/kinit/start_kdeinit.c	2012-09-16 09:38:15.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kinit/start_kdeinit.c	2019-12-16 21:06:23.194632421 +0000
+@@ -27,6 +27,8 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
++#include <sys/stat.h>
++
+ #ifdef KDEINIT_OOM_PROTECT
+ 
+ /*
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kio/kssl/kssl.cc kdelibs-trinity-3.5.13.2/kio/kssl/kssl.cc
+--- kdelibs-trinity-3.5.13.2.orig/kio/kssl/kssl.cc	2012-06-02 16:42:50.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kio/kssl/kssl.cc	2019-12-16 21:05:47.769992629 +0000
+@@ -284,7 +284,7 @@
+ 		return -1;
+ 
+ 	if (d->session) {
+-		if (static_cast<SSL_SESSION*>(d->session->_session)->sess_cert == 0)
++		if (static_cast<SSL_SESSION*>(d->session->_session)->peer == 0)
+ 		{
+ 			kdDebug(7029) << "Can't reuse session, no certificate." << endl;
+ 			delete d->session;
+@@ -375,7 +375,7 @@
+ 		return -1;
+ 
+ 	if (d->session) {
+-		if (static_cast<SSL_SESSION*>(d->session->_session)->sess_cert == 0)
++		if (static_cast<SSL_SESSION*>(d->session->_session)->peer == 0)
+ 		{
+ 			kdDebug(7029) << "Can't reuse session, no certificate." << endl;
+ 			delete d->session;
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kjs/operations.cpp kdelibs-trinity-3.5.13.2/kjs/operations.cpp
+--- kdelibs-trinity-3.5.13.2.orig/kjs/operations.cpp	2012-06-02 16:42:50.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kjs/operations.cpp	2019-12-16 21:08:38.128239421 +0000
+@@ -55,13 +55,13 @@
+ 
+ bool KJS::isNaN(double d)
+ {
+-#ifdef HAVE_FUNC_ISNAN
++//#ifdef HAVE_FUNC_ISNAN
+   return isnan(d);
+-#elif defined HAVE_FLOAT_H
+-  return _isnan(d) != 0;
+-#else
+-  return !(d == d);
+-#endif
++//#elif defined HAVE_FLOAT_H
++//  return _isnan(d) != 0;
++//#else
++//  return !(d == d);
++//#endif
+ }
+ 
+ bool KJS::isInf(double d)
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kate/part/katebuffer.cpp kdelibs-trinity-3.5.13.2/kate/part/katebuffer.cpp
+--- kdelibs-trinity-3.5.13.2.orig/kate/part/katebuffer.cpp	2012-09-08 15:01:25.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/kate/part/katebuffer.cpp	2019-12-16 21:18:22.355305295 +0000
+@@ -917,7 +917,7 @@
+   } while (textLine->firstChar()==-1);
+   kdDebug(13020)<<"updatePreviousNotEmptyLine: updating line:"<<(blk->startLine()+current_line)<<endl;
+   TQMemArray<uint> foldingList=textLine->foldingListArray();
+-  while ( (foldingList.size()>0)  && ( abs(foldingList[foldingList.size()-2])==1)) {
++  while ( (foldingList.size()>0)  && ( abs(static_cast<int>(foldingList[foldingList.size()-2]))==1)) {
+     foldingList.resize(foldingList.size()-2,TQGArray::SpeedOptim);
+   }
+   addIndentBasedFoldingInformation(foldingList,addindent,deindent);
+diff -Naur kdelibs-trinity-3.5.13.2.orig/kio/CMakeLists.txt kdelibs-trinity-3.5.13.2/kio/CMakeLists.txt
+--- kdelibs-trinity-3.5.13.2.orig/kio/CMakeLists.txt	2019-12-16 21:26:47.912232005 +0000
++++ kdelibs-trinity-3.5.13.2/kio/CMakeLists.txt	2019-12-16 21:39:10.070081231 +0000
+@@ -64,6 +64,6 @@
+   SOURCES ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp
+   VERSION 4.2.0
+   EMBED kssl-static kiocore-static ksycoca-static kbookmarks-static kfile-static
+-  LINK kdeui-shared kdesu-shared kwalletclient-shared ${ACL_LIBRARIES}
++  LINK kdeui-shared kdesu-shared kwalletclient-shared ${ACL_LIBRARIES} crypto
+   DESTINATION ${LIB_INSTALL_DIR}
+ )
+diff -Naur kdelibs-trinity-3.5.13.2.orig/krsync/krsync.cpp kdelibs-trinity-3.5.13.2/krsync/krsync.cpp
+--- kdelibs-trinity-3.5.13.2.orig/krsync/krsync.cpp	2012-09-16 09:38:16.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/krsync/krsync.cpp	2019-12-16 21:48:57.985878153 +0000
+@@ -61,7 +61,7 @@
+ #define CONFIGURATION_FILE_SEPARATOR ';'
+ 
+ KRsync::KRsync (TQObject* parent, const char* name)
+-                : TQObject (parent, name), m_bSettingsLoaded(false), m_progressDialog(false), m_progressDialogExists(false), m_bInSpecialSync(false)
++                : TQObject (parent, name), m_bSettingsLoaded(false), m_progressDialog(NULL), m_progressDialogExists(false), m_bInSpecialSync(false)
+ {
+     loadSettings();
+ 
+diff -Naur kdelibs-trinity-3.5.13.2.orig/dcop/dcopidlng/kdocAstUtil.pm kdelibs-trinity-3.5.13.2/dcop/dcopidlng/kdocAstUtil.pm
+--- kdelibs-trinity-3.5.13.2.orig/dcop/dcopidlng/kdocAstUtil.pm	2012-06-02 16:42:48.000000000 +0000
++++ kdelibs-trinity-3.5.13.2/dcop/dcopidlng/kdocAstUtil.pm	2019-12-16 22:40:00.947204356 +0000
+@@ -438,8 +438,7 @@
+ 		dumpAst( $kid );
+ 	}
+ 
+-	print "\t" x $depth, "Documentation nodes:\n" if defined 
+-		@{ $node->{Doc}->{ "Text" }};
++	print "\t" x $depth, "Documentation nodes:\n" if @{ $node->{Doc}->{ "Text" }};
+ 
+ 	foreach $kid ( @{ $node->{Doc}->{ "Text" }} ) {
+ 		dumpAst( $kid );

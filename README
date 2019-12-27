@@ -1,0 +1,6 @@
+patched trintiy gentoo overlay
+
+- compilation of most of the meta packages succeeded on latest gentoo ~amd64
+- patches folder contains patches applied which are not ready for clean integration yet
+- minor adaptions for libressl and musl libc were required
+- dbus was removed entirely, as a consequence kdm is not supported (and not required anyway)

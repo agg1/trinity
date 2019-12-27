@@ -1,0 +1,12 @@
+diff -Naur kdegraphics-3.5.13.1.orig/ksvg/impl/SVGAElementImpl.cc kdegraphics-3.5.13.1/ksvg/impl/SVGAElementImpl.cc
+--- kdegraphics-3.5.13.1.orig/ksvg/impl/SVGAElementImpl.cc	2012-05-22 23:44:42.000000000 +0000
++++ kdegraphics-3.5.13.1/ksvg/impl/SVGAElementImpl.cc	2019-12-17 02:01:10.053206215 +0000
+@@ -111,7 +111,7 @@
+ 		}
+ 	}
+ 
+-	return false;
++	return NULL;
+ }
+ 
+ // vim:ts=4:noet

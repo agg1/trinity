@@ -1,0 +1,12 @@
+diff -Naur kdeutils-trinity-3.5.13.2.orig/khexedit/lib/kbigbuffer.cpp kdeutils-trinity-3.5.13.2/khexedit/lib/kbigbuffer.cpp
+--- kdeutils-trinity-3.5.13.2.orig/khexedit/lib/kbigbuffer.cpp	2012-05-22 23:46:53.000000000 +0000
++++ kdeutils-trinity-3.5.13.2/khexedit/lib/kbigbuffer.cpp	2019-12-17 02:22:29.442148147 +0000
+@@ -170,7 +170,7 @@
+   if( NoOfFreePages < 1 )
+   {
+     // free the page which is the furthest away from the page we are loading
+-    if( abs(FirstPage-PageIndex) > abs(LastPage-PageIndex) )
++    if( abs(static_cast<int>(FirstPage-PageIndex)) > abs(static_cast<int>(LastPage-PageIndex)) )
+       while( !freePage(FirstPage++) );
+     else
+       while( !freePage(LastPage--) );

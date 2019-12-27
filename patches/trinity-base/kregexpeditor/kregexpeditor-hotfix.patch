@@ -1,0 +1,12 @@
+diff -Naur kdeutils-trinity-3.5.13.2.orig/kregexpeditor/regexpconverter.cpp kdeutils-trinity-3.5.13.2/kregexpeditor/regexpconverter.cpp
+--- kdeutils-trinity-3.5.13.2.orig/kregexpeditor/regexpconverter.cpp	2012-09-08 10:06:58.000000000 +0000
++++ kdeutils-trinity-3.5.13.2/kregexpeditor/regexpconverter.cpp	2019-12-17 02:24:08.545131864 +0000
+@@ -33,7 +33,7 @@
+ RegExpConverter* RegExpConverter::_current = 0;
+ RegExp* RegExpConverter::parse( const TQString&, bool* ok )
+ {
+-    ok = false;
++    *ok = false;
+     return new DotRegExp( false ); // This method should never be called.
+ }
+ 

@@ -1,0 +1,26 @@
+diff -Naur kdeutils-trinity-3.5.13.2.orig/ksim/monitors/filesystem/filesystemstats.cpp kdeutils-trinity-3.5.13.2/ksim/monitors/filesystem/filesystemstats.cpp
+--- kdeutils-trinity-3.5.13.2.orig/ksim/monitors/filesystem/filesystemstats.cpp	2012-06-04 01:15:14.000000000 +0000
++++ kdeutils-trinity-3.5.13.2/ksim/monitors/filesystem/filesystemstats.cpp	2019-12-17 02:26:36.960802647 +0000
+@@ -30,6 +30,8 @@
+ #include <sys/types.h>
+ #include <sys/param.h>
+ 
++#include <paths.h>
++
+ #if defined(HAVE_SYS_STATVFS_H) && !defined(__DragonFly__)
+ #include <sys/statvfs.h>
+ #elif defined( HAVE_SYS_STATFS_H )
+diff -Naur kdeutils-trinity-3.5.13.2.orig/ksim/systeminfo.cpp kdeutils-trinity-3.5.13.2/ksim/systeminfo.cpp
+--- kdeutils-trinity-3.5.13.2.orig/ksim/systeminfo.cpp	2012-05-22 23:46:53.000000000 +0000
++++ kdeutils-trinity-3.5.13.2/ksim/systeminfo.cpp	2019-12-17 02:31:36.766037273 +0000
+@@ -28,8 +28,9 @@
+ #include "systeminfo.h"
+ 
+ #ifdef __linux__
++//#include <sys/sysinfo.h>
++//#include <linux/kernel.h>
+ #include <sys/sysinfo.h>
+-#include <linux/kernel.h>
+ #endif
+ 
+ #ifdef HAVE_SYS_LOADAVG_H

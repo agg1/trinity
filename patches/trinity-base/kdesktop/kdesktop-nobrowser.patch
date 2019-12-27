@@ -1,0 +1,12 @@
+diff -Naur kdebase-trinity-3.5.13.2.orig/kdesktop/init/CMakeLists.txt kdebase-trinity-3.5.13.2/kdesktop/init/CMakeLists.txt
+--- kdebase-trinity-3.5.13.2.orig/kdesktop/init/CMakeLists.txt	2012-05-24 01:35:15.000000000 +0000
++++ kdebase-trinity-3.5.13.2/kdesktop/init/CMakeLists.txt	2019-12-18 18:08:30.066446306 +0000
+@@ -16,7 +16,7 @@
+   DESTINATION ${DATA_INSTALL_DIR}/kdesktop )
+ 
+ install( FILES
+-    My_Computer My_Documents My_Network_Places Printers Trash Web_Browser
++    My_Computer My_Documents My_Network_Places Printers Trash
+   DESTINATION ${DATA_INSTALL_DIR}/kdesktop/Desktop )
+ 
+ install( FILES
